@@ -1,0 +1,73 @@
+#feel-yourself {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    background-image: url(../content/index_content/snow-capped-mountains-under-the-cloudy-skies-1054289.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0 16%;
+    margin-bottom: 70px;
+}
+
+#feel-yourself>img {
+    display: none;
+    width: 100%;
+}
+
+#lines {
+    display: none;
+    position: absolute;
+    right: 90px;
+    width: 100%;
+    z-index: 1;
+}
+
+.in-front {
+    z-index: 1;
+}
+
+#feel-yourself>h1 {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    /* font-size: 144px; */
+    font-size: 10vw;
+    font-family: "Quicksand", serif;
+    text-shadow: 0.6vw 5px white;
+    white-space: nowrap;
+}
+
+#shop-now {
+    display: none;
+    /* background-color: white; */
+    /* background-image: url(../content/index_content/cosmos.jpg); */
+    position: relative;
+}
+
+#shop-now>img {
+    width: 100vw;
+}
+
+#shop-now>h1 {
+    font-size: 144px;
+    font-family: "Quicksand", serif;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#shop-now>h1>a {
+    color: black;
+    text-decoration: none;
+    font-size: 17vw;
+}

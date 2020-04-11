@@ -1,0 +1,77 @@
+#men,
+#women {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(10, auto);
+    grid-column-gap: 15px;
+    grid-row-gap: 35px;
+    padding: 40px 16%;
+}
+
+.image-wrapper {
+    position: relative;
+    padding: 20px;
+}
+
+.image-wrapper>img {
+    width: 100%;
+}
+
+.image-wrapper>button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+.price {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.description {
+    position: relative;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#sort-bar {
+    align-items: center;
+    margin-top: 20px;
+}
+
+#sort-bar>ul {
+    padding: 0 16%;
+    height: 60px;
+    display: flex;
+    background-color: #6d6d6d;
+    list-style: none;
+}
+
+#sort-bar>ul>li {
+    position: relative;
+    margin: auto;
+}
+
+#sort-bar>ul>li>button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dropdown-content>ul {
+    list-style: none;
+}
+
+.show {
+    display: block;
+}
+
+.chosen {
+    background-color: rgb(255, 255, 181);
+}
