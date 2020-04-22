@@ -67,7 +67,7 @@
     padding: 0 16%;
 }
 
-.dropdown-content {
+.dropdown-secbar {
     display: none;
     position: absolute;
     background-color: #a5a5a5;
@@ -76,7 +76,7 @@
     left: 16%;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-secbar {
     display: block;
     margin-left: 10px;
 }

@@ -64,7 +64,16 @@
     padding-right: 10px;
 }
 
-.dropdown-content>ul {
+.dropdown-sortbar {
+    display: none;
+    position: absolute;
+    background-color: #a5a5a5;
+    min-width: 800px;
+    z-index: 2;
+    left: 16%;
+}
+
+.dropdown-sortbar>ul {
     list-style: none;
 }
 

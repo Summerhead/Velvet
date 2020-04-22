@@ -29,7 +29,7 @@ function load_men_json() {
                 properties: {
                     product_type: ['sweatshirt'],
                     color: ['black'],
-                    brand: ["under armour"]
+                    brand: ["Under Armour"]
                 }
             },
             {

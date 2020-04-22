@@ -1,5 +1,7 @@
 var gender;
 var images;
+var image_properties_dict = {};
+var properties_sort = {};
 
 function loadDivs(g) {
     gender = g;
@@ -24,8 +26,6 @@ function loadContent() {
 }
 
 function loadImages(images) {
-    var keys = new Set();
-    var dict = {};
     var properties;
 
     images["images"].forEach(image => {
@@ -34,19 +34,19 @@ function loadImages(images) {
         Object.keys(properties).forEach(key => {
             attributes = properties[key];
 
-            if (key in dict) {
+            properties_sort[key] = new Set()
+
+            if (key in image_properties_dict) {
                 attributes.forEach(attribute => {
-                    dict[key].add(attribute);
+                    image_properties_dict[key].add(attribute);
                 });
             } else {
-                keys.add(key);
-
                 var values = new Set();
 
                 attributes.forEach(attribute => {
                     values.add(attribute);
                 });
-                dict[key] = values;
+                image_properties_dict[key] = values;
             }
         });
 
@@ -70,13 +70,13 @@ function loadImages(images) {
                                </div>`;
     });
 
-    loadSortBar(keys, dict);
+    loadSortBar();
 }
 
-function loadSortBar(keys, dict) {
+function loadSortBar() {
     var sort_bar_content = `<ul><li><button>Sort</button></li>`;
 
-    keys.forEach(key => {
+    Object.keys(image_properties_dict).forEach(key => {
         var fixed_key = key[0].toUpperCase() + key.slice(1)
         if (key.indexOf("_") != -1) {
             fixed_key = fixed_key.replace("_", " ");
@@ -84,21 +84,21 @@ function loadSortBar(keys, dict) {
 
         sort_bar_content += `<li class='dropdown-sort' id='${key}'>
         <button class='dropbtn' onclick=openDropDownMenu(this.parentElement.id)>${fixed_key}</button>
-        <div class='dropdown-content'>
+        <div class='dropdown-sortbar'>
         <ul>`;
 
-        dict[key].forEach(value => {
+        image_properties_dict[key].forEach(value => {
             let fixed_value = value
             if (value.indexOf(" ") != -1) {
                 fixed_value = value.replace(" ", "_");
             }
-            if (key.toLowerCase() != "brand") {
+            if (key != "brand") {
                 value = value[0].toUpperCase() + value.slice(1);
             }
 
             sort_bar_content += `<li id='${fixed_value}'>
             <a onclick="optionChosen('${fixed_value}');
-            sort('${key}', this.innerText);")">${value}</a></li>`;
+            sort('${key}', '${value}');")">${value}</a></li>`;
         });
 
         sort_bar_content += `</ul></div>`;
@@ -108,18 +108,8 @@ function loadSortBar(keys, dict) {
     document.getElementById("sort-bar").innerHTML = sort_bar_content;
 }
 
-function closeDropDown(value) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (let i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains("show")) {
-            openDropdown.classList.remove("show");
-        }
-    }
-}
-
 function openDropDownMenu(id) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var dropdowns = document.getElementsByClassName("dropdown-sortbar");
     for (let i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];
         if (openDropdown.classList.contains("show")) {
@@ -131,9 +121,9 @@ function openDropDownMenu(id) {
 
 window.onclick = function (event) {
     if (!event.target.matches(".dropbtn") &&
-        !event.target.matches(".dropdown-content>ul>li") &&
-        !event.target.matches(".dropdown-content>ul>li>a")) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
+        !event.target.matches(".dropdown-sortbar>ul>li") &&
+        !event.target.matches(".dropdown-sortbar>ul>li>a")) {
+        var dropdowns = document.getElementsByClassName("dropdown-sortbar");
 
         for (let i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
@@ -149,28 +139,54 @@ function optionChosen(value) {
 }
 
 function sort(option, value) {
+    if (properties_sort[option].has(value)) {
+        properties_sort[option].delete(value)
+    } else {
+        properties_sort[option].add(value)
+    }
+
     document.getElementById(`${gender}`).innerHTML = "";
 
     images["images"].forEach(image => {
-        if (image["properties"][option].includes(value.toLowerCase())) {
+        continue_ = true;
+
+        for (let key in properties_sort) {
+            if (properties_sort[key].size) {
+                continue_ = false
+
+                for (let index = 0; index < image["properties"][key].length; index++) {
+                    if (properties_sort[key].has(image["properties"][key][index])) {
+                        continue_ = true;
+                        break;
+                    }
+                }
+
+                if (!continue_) {
+                    break;
+                }
+            }
+        }
+
+        if (continue_) {
             document.getElementById(
                 `${gender}`
             ).innerHTML += `<div class="image-wrapper">
-                           <img src="../content/sales_content/${gender}/${
-                image["name"]
-            }" />
-                           <div class="props">
-                               <p class="description">${
-                                   image["description"]
-                               }</p>
-                               <p class="price">$${Number(
-                                   image["price"]
-                               ).toFixed(2)}</p>
-                               </div>
-                               <button onclick=addToStorage('${
-                                   image["name"]
-                               }')>Add</button>
-                               </div>`;
+                <img src="../content/sales_content/${gender}/${
+        image["name"]
+    }" />
+                <div class="props">
+                    <p class="description">${
+                        image["description"]
+                    }</p>
+                    <p class="price">$${Number(
+                        image["price"]
+                    ).toFixed(2)}</p>
+                    </div>
+                    <button onclick=addToStorage('${
+                        image["name"]
+                    }')>Add</button>
+                    </div>`;
+
         }
     });
 }
@@ -179,7 +195,7 @@ var i = sessionStorage.length - 1;
 
 function addToStorage(value) {
     sessionStorage.setItem(i++, value);
-    document.getElementsByClassName("dropdown-content")[0].innerHTML += value;
+    document.getElementsByClassName("dropdown-sortbar")[0].innerHTML += value;
 }
 
 function saveCookies(name, value) {

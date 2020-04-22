@@ -1,13 +1,12 @@
 #feel-yourself {
     display: grid;
-    height: 100vh;
     grid-template-columns: 1fr 1fr 1fr;
     position: relative;
     background-image: url(../content/index_content/snow-capped-mountains-under-the-cloudy-skies-1054289.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 0 16%;
+    /* padding: 0 60px; */
     margin-bottom: 70px;
 }
 
@@ -19,7 +18,7 @@
 #lines {
     display: none;
     position: absolute;
-    right: 90px;
+    right: 30px;
     width: 100%;
     z-index: 1;
 }

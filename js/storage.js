@@ -1,7 +1,7 @@
 function checkStorage() {
     // sessionStorage.clear();
     document.getElementsByClassName(
-        "dropdown-content"
+        "dropdown-secbar"
     )[0].innerHTML = "";
     console.log(sessionStorage);
     for (let key = 0; key < sessionStorage.length - 1; key++) {
