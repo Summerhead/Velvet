@@ -5,7 +5,7 @@ var properties_sort = {};
 
 function loadDivs(g) {
     gender = g;
-    document.querySelector("section").innerHTML = `<div id="sort-bar"></div>
+    document.querySelector("main").innerHTML = `<div id="sort-bar"></div>
     <div id="${gender}"></div>`;
 
     loadContent();
@@ -98,7 +98,7 @@ function loadSortBar() {
 
             sort_bar_content += `<li id='${fixed_value}'>
             <a onclick="optionChosen('${fixed_value}');
-            sort('${key}', '${value}');")">${value}</a></li>`;
+            sort('${key}', '${fixed_value}');")">${value}</a></li>`;
         });
 
         sort_bar_content += `</ul></div>`;

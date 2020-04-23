@@ -4,44 +4,63 @@
     box-sizing: border-box;
 }
 
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-family: "Josefin Sans", serif;
+    font-size: 40px;
+}
+
+.logo>a {
+    color: black;
+    text-decoration: none;
+}
+
 .first-bar {
     height: 70px;
     display: flex;
     background-color: white;
     align-items: center;
-    padding: 0 16%;
-}
-
-.first-bar>h4 {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    font-family: "Josefin Sans", serif;
-    font-size: 40px;
-}
-
-.first-bar>h4>a {
-    color: black;
-    text-decoration: none;
+    padding: 0 100px;
+    justify-content: space-between;
 }
 
 .women-men {
     position: relative;
-    display: flex;
     top: 8px;
 }
 
-.women-men>li {
+.women-men>ul {
+    display: flex;
+}
+
+.women-men>ul>li {
     list-style: none;
     padding-right: 20px;
 }
 
-.women-men>li>a {
+.women-men>ul>li>a {
     text-decoration: none;
     color: black;
     font-family: "Quicksand", serif;
     font-size: 20px;
     text-transform: uppercase;
+}
+
+.shopping {
+    position: relative;
+    display: flex;
+    top: 8px;
+    right: 0px;
+}
+
+.shopping>a {
+    padding-left: 20px;
+}
+
+.shopping>a>img {
+    width: 20px;
 }
 
 .categories {
@@ -64,16 +83,16 @@
     height: 50px;
     background-color: #ffe1fb;
     align-items: center;
-    padding: 0 16%;
+    padding: 0 100px;
 }
 
 .dropdown-secbar {
     display: none;
     position: absolute;
-    background-color: #a5a5a5;
+    background-color: #ffffff;
     min-width: 800px;
     z-index: 2;
-    left: 16%;
+    left: 100px;
 }
 
 .dropdown:hover .dropdown-secbar {

@@ -5,7 +5,7 @@
     grid-template-rows: repeat(10, auto);
     grid-column-gap: 15px;
     grid-row-gap: 35px;
-    padding: 40px 16%;
+    padding: 40px 100px;
 }
 
 .image-wrapper {
@@ -43,7 +43,7 @@
 }
 
 #sort-bar>ul {
-    padding: 0 16%;
+    padding: 0 100px;
     height: 60px;
     display: flex;
     background-color: #6d6d6d;
@@ -70,7 +70,7 @@
     background-color: #a5a5a5;
     min-width: 800px;
     z-index: 2;
-    left: 16%;
+    left: 100px;
 }
 
 .dropdown-sortbar>ul {
