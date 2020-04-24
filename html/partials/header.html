@@ -6,7 +6,10 @@
         <title>Document</title>
     </head>
     <body>
-        <h4 class="logo"><a href="index.html">Velvet</a></h4>
+        <h4 class="logo">
+            <a href="index.html">Velvet</a>
+        </h4>
+
         <div class="first-bar">
             <nav class="women-men">
                 <ul>
@@ -15,31 +18,58 @@
                 </ul>
             </nav>
             <div class="shopping">
-                <a><img src="../content/index_content/cart.svg" /></a>
-                <a><img src="../content/index_content/user.svg" /></a>
+                <div id="cart">
+                    <a href="#">
+                        <img src="../content/icons/cart.svg" />
+                        <span></span>
+                    </a>
+                </div>
+                <div id="user">
+                    <a href="#">
+                        <img src="../content/icons/user.svg" />
+                    </a>
+                </div>
             </div>
         </div>
+
         <div class="second-bar">
             <nav>
                 <ul class="categories">
                     <li class="dropdown">
                         <a href="#" class="dropdown-link">Clothing</a>
-                        <div class="dropdown-secbar">Clothing</div>
+                        <div class="dropdown-secbar">
+                            <div class="clothing"></div>
+                        </div>
                     </li>
                     <li class="dropdown">
                         <a href="#">Shoes</a>
-                        <div class="dropdown-secbar">Shoes</div>
+                        <div class="dropdown-secbar">
+                            <div class="shoes">Shoes</div>
+                        </div>
                     </li>
                     <li class="dropdown">
                         <a href="#">Accessories</a>
-                        <div class="dropdown-secbar">Accessories</div>
+                        <div class="dropdown-secbar">
+                            <div class="accessories">Accessories</div>
+                        </div>
                     </li>
                     <li class="dropdown">
                         <a href="#">Brands</a>
-                        <div class="dropdown-secbar">Brands</div>
+                        <div class="dropdown-secbar">
+                            <div class="brands">Brands</div>
+                        </div>
                     </li>
                 </ul>
             </nav>
         </div>
+
+        <script src="/js/partials/darken_main.js"></script>
+        <script>
+            $(".dropdown-secbar").each(function () {
+                $(this).load("./partials/dropdown.html");
+            });
+
+            checkStorage();
+        </script>
     </body>
 </html>

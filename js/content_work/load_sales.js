@@ -1,7 +1,7 @@
-var gender;
-var images;
-var image_properties_dict = {};
-var properties_sort = {};
+var gender
+var images
+var image_properties_dict = {}
+var properties_sort = {}
 
 function loadDivs(g) {
     gender = g;
@@ -65,7 +65,7 @@ function loadImages(images) {
                                ).toFixed(2)}</p>
                                </div>
                                <button onclick=addToStorage('${
-                                   image["name"]
+                                gender}','${image["name"]
                                }')>Add</button>
                                </div>`;
     });
@@ -183,20 +183,13 @@ function sort(option, value) {
                     ).toFixed(2)}</p>
                     </div>
                     <button onclick=addToStorage('${
-                        image["name"]
+                        gender}','${image["name"]
                     }')>Add</button>
                     </div>`;
-
         }
     });
 }
 
-var i = sessionStorage.length - 1;
-
-function addToStorage(value) {
-    sessionStorage.setItem(i++, value);
-    document.getElementsByClassName("dropdown-sortbar")[0].innerHTML += value;
-}
 
 function saveCookies(name, value) {
     options = {

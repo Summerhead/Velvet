@@ -55,12 +55,39 @@
     right: 0px;
 }
 
-.shopping>a {
+.shopping>div>a {
     padding-left: 20px;
 }
 
-.shopping>a>img {
+.shopping>div>a>img {
     width: 20px;
+}
+
+.added-stuff {
+    display: none;
+    background-color: white;
+    position: absolute;
+    left: 0;
+}
+
+#cart {
+    position: relative;
+    list-style: none;
+}
+
+#cart>a>img {
+    width: 22px;
+}
+
+#cart>a>span {
+    position: absolute;
+    top: -5px;
+    color: black;
+    font-size: 14px;
+}
+
+#cart:hover .added-stuff {
+    display: block;
 }
 
 .categories {
@@ -69,7 +96,7 @@
 
 .categories>li {
     list-style: none;
-    padding-right: 20px;
+    margin-right: 20px;
 }
 
 .categories>li>a {
@@ -88,19 +115,114 @@
 
 .dropdown-secbar {
     display: none;
+    margin: 0 5%;
     position: absolute;
-    background-color: #ffffff;
-    min-width: 800px;
+    width: 90%;
     z-index: 2;
-    left: 100px;
-}
-
-.dropdown:hover .dropdown-secbar {
-    display: block;
-    margin-left: 10px;
+    left: 0;
 }
 
 li a {
     display: inline-block;
     padding: 17px 10px;
+}
+
+.dropdown:hover {
+    background-color: #ffc5c5;
+}
+
+.dropdown:hover .dropdown-secbar {
+    display: block;
+}
+
+.dropdown-secbar>.clothing {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    font-family: "Quicksand", serif;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-secbar>.clothing>.left {
+    padding: 20px 20px;
+    display: grid;
+    grid-column: 1;
+    background-color: #ffc5c5;
+    grid-template-columns: 1fr 1fr;
+}
+
+.dropdown-secbar>.clothing>.left>.image {
+    grid-column: 1;
+    position: relative;
+    text-align: center;
+    width: auto;
+}
+
+.dropdown-secbar>.clothing>.left>.image>img {
+    position: relative;
+    width: 150px;
+}
+
+.dropdown-secbar>.clothing>.left>.offers {
+    grid-column: 2;
+    margin: 0 auto;
+}
+
+.dropdown-secbar>.clothing>.left>.offers>h4 {
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.dropdown-secbar>.clothing>.left>.offers>div {
+    padding: 10px 0;
+    font-size: 15px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.dropdown-secbar>.clothing>.left>.offers>.last {
+    border-bottom: 0;
+}
+
+.dropdown-secbar>.clothing>.right {
+    padding: 20px 20px;
+    display: grid;
+    grid-column: 2;
+    background-color: #ffffff;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.dropdown-secbar>.clothing>.right>.all-clothing,
+.dropdown-secbar>.clothing>.right>.shop-by-fit {
+    grid-column: 1;
+}
+
+.dropdown-secbar>.clothing>.right>.collections {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.dropdown-secbar>.clothing>.right>.shop-by-size {
+    grid-row: 1;
+}
+
+.dropdown-secbar>.clothing>.right>.shop-by-size,
+.dropdown-secbar>.clothing>.right>.velvet-brands {
+    grid-column: 3;
+}
+
+.dropdown-secbar>.clothing>.right>div {
+    margin-bottom: 15px;
+    width: fit-content;
+}
+
+.dropdown-secbar>.clothing>.right>div>h4 {
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.list {
+    padding-top: 10px;
+}
+
+.list>div {
+    padding: 5px 0;
 }
