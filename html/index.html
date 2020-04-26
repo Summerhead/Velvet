@@ -9,14 +9,15 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="../css/styles.css" />
-        <link rel="stylesheet" href="../css/styles-index.css" />
-        <title>Velvet: online clothing shop</title>
+        <link rel="stylesheet" href="../css/styles_index.css" />
+        <title>Velvet - Online Clothing Shop</title>
     </head>
     <body>
         <header></header>
+
         <main>
             <div class="sales-banner">
-                <span>20% off everything</span>
+                <span>20% OFF EVERYTHING</span>
             </div>
 
             <div id="feel-yourself">
@@ -40,9 +41,12 @@
 
         <script src="../js/content_work/load_index.js"></script>
         <script src="../js/storage.js"></script>
+        <script src="../js/cookies.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
         <script>
             $("header").load("./partials/header.html");
+
+            deleteCookie("velvet_bag");
         </script>
     </body>
 </html>

@@ -48,6 +48,10 @@
     text-transform: uppercase;
 }
 
+.women-men>ul>li>a:visited {
+    font-weight: bold;
+}
+
 .shopping {
     position: relative;
     display: flex;
@@ -61,13 +65,6 @@
 
 .shopping>div>a>img {
     width: 20px;
-}
-
-.added-stuff {
-    display: none;
-    background-color: white;
-    position: absolute;
-    left: 0;
 }
 
 #cart {
@@ -90,6 +87,11 @@
     display: block;
 }
 
+li a {
+    display: inline-block;
+    margin: 17px 10px;
+}
+
 .categories {
     display: flex;
 }
@@ -103,7 +105,7 @@
     text-decoration: none;
     color: black;
     font-family: "Quicksand", serif;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .second-bar {
@@ -122,11 +124,6 @@
     left: 0;
 }
 
-li a {
-    display: inline-block;
-    padding: 17px 10px;
-}
-
 .dropdown:hover {
     background-color: #ffc5c5;
 }
@@ -139,7 +136,7 @@ li a {
     display: grid;
     grid-template-columns: 1fr 2fr;
     font-family: "Quicksand", serif;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
 }
 
 .dropdown-secbar>.clothing>.left {
@@ -186,7 +183,7 @@ li a {
     padding: 20px 20px;
     display: grid;
     grid-column: 2;
-    background-color: #ffffff;
+    background-color: white;
     grid-template-columns: 1fr 1fr 1fr;
 }
 

@@ -9,23 +9,20 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="../css/styles.css" />
-        <link rel="stylesheet" href="../css/styles_sales.css" />
-        <title>Velvet Sales</title>
+        <title>Velvet Shopping Bag</title>
     </head>
     <body>
         <header></header>
-        <main></main>
 
-        <script src="../js/content_work/load_sales.js"></script>
+        <h4>Shopping bag</h4>
+        <div id="items"></div>
+
+        <script src="/js/load_shopping_bag.js"></script>
         <script src="../js/storage.js"></script>
         <script src="../js/cookies.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
         <script>
             $("header").load("./partials/header.html");
-
-            window.onload = function () {
-                loadDivs("women");
-            };
         </script>
     </body>
 </html>

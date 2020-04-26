@@ -17,8 +17,6 @@ function loadFeelYourself() {
         });
     document.querySelector("div#feel-yourself>h1").style.display =
         "block";
-
-    console.log(document.querySelector("section").style);
 }
 
 function loadShopNow() {
@@ -26,7 +24,6 @@ function loadShopNow() {
 }
 
 function checkForCoockies() {
-    console.log(sessionStorage.getItem(0));
     document.getElementsByClassName(
         "dropdown-content"
     )[0].innerHTML = sessionStorage.getItem(0);

@@ -13,7 +13,7 @@
     padding: 20px;
 }
 
-.image-wrapper>img {
+.image-wrapper>a>img {
     width: 100%;
 }
 
@@ -52,7 +52,7 @@
 
 #sort-bar>ul>li {
     position: relative;
-    margin: auto;
+    margin: 10px 20px;
 }
 
 #sort-bar>ul>li>button {
@@ -60,6 +60,7 @@
     background-color: transparent;
     border: none;
     height: 40px;
+    min-width: 100px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -68,13 +69,18 @@
     display: none;
     position: absolute;
     background-color: #a5a5a5;
-    min-width: 800px;
+    min-width: 300px;
     z-index: 2;
-    left: 100px;
 }
 
 .dropdown-sortbar>ul {
     list-style: none;
+}
+
+.dropdown-sortbar>ul>li>a {
+    margin: 0px;
+    padding: 17px 10px;
+
 }
 
 .show {

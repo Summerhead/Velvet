@@ -1,12 +1,15 @@
-var gender
-var images
-var image_properties_dict = {}
-var properties_sort = {}
+var gender;
+var images;
+var items_container;
+var image_properties_dict = {};
+var properties_sort = {};
 
 function loadDivs(g) {
     gender = g;
     document.querySelector("main").innerHTML = `<div id="sort-bar"></div>
     <div id="${gender}"></div>`;
+
+    items_container = document.getElementById(`${gender}`)
 
     loadContent();
 }
@@ -34,7 +37,7 @@ function loadImages(images) {
         Object.keys(properties).forEach(key => {
             attributes = properties[key];
 
-            properties_sort[key] = new Set()
+            properties_sort[key] = new Set();
 
             if (key in image_properties_dict) {
                 attributes.forEach(attribute => {
@@ -50,34 +53,34 @@ function loadImages(images) {
             }
         });
 
-        document.getElementById(
-            `${gender}`
-        ).innerHTML += `<div class="image-wrapper">
-                           <img src="../content/sales_content/${gender}/${
-            image["name"]
-        }" />
-                           <div class="props">
-                               <p class="description">${
-                                   image["description"]
-                               }</p>
-                               <p class="price">$${Number(
-                                   image["price"]
-                               ).toFixed(2)}</p>
-                               </div>
-                               <button onclick=addToStorage('${
-                                gender}','${image["name"]
-                               }')>Add</button>
-                               </div>`;
+        loadImage(image);
     });
 
     loadSortBar();
+}
+
+function loadImage(image) {
+    stringified_image = JSON.stringify([gender, image]).replace(/ /g, '&#32;')
+
+    items_container.innerHTML +=
+        `<div class="image-wrapper">
+            <a href="item.html" onclick="saveCookie('item','${stringified_image}')">
+                <img src="../content/sales_content/${gender}/${image["name"]}" />
+            </a>
+            <div class="props">
+                <p class="description">${image["description"]}</p>
+                <p class="price">$${Number(image["price"]).toFixed(2)}</p>
+            </div>
+            <button onclick=addCookie('velvet_bag','${stringified_image}')>Add</button>
+        </div>`;
 }
 
 function loadSortBar() {
     var sort_bar_content = `<ul><li><button>Sort</button></li>`;
 
     Object.keys(image_properties_dict).forEach(key => {
-        var fixed_key = key[0].toUpperCase() + key.slice(1)
+        var fixed_key = key[0].toUpperCase() + key.slice(1);
+
         if (key.indexOf("_") != -1) {
             fixed_key = fixed_key.replace("_", " ");
         }
@@ -88,19 +91,20 @@ function loadSortBar() {
         <ul>`;
 
         image_properties_dict[key].forEach(value => {
-            let fixed_value = value
+            let fixed_value = value;
+
             if (value.indexOf(" ") != -1) {
                 fixed_value = value.replace(" ", "_");
             }
+
             if (key != "brand") {
                 value = value[0].toUpperCase() + value.slice(1);
             }
 
             sort_bar_content += `<li id='${fixed_value}'>
             <a onclick="optionChosen('${fixed_value}');
-            sort('${key}', '${fixed_value}');")">${value}</a></li>`;
+            sort('${key}', '${value}')">${value}</a></li>`;
         });
-
         sort_bar_content += `</ul></div>`;
     });
 
@@ -135,24 +139,25 @@ window.onclick = function (event) {
 };
 
 function optionChosen(value) {
-    document.querySelector(`#${value}>a`).classList.toggle("chosen");
+    document.querySelector(`#${value}`).classList.toggle("chosen");
 }
 
 function sort(option, value) {
+    console.log(option, value)
     if (properties_sort[option].has(value)) {
-        properties_sort[option].delete(value)
+        properties_sort[option].delete(value);
     } else {
-        properties_sort[option].add(value)
+        properties_sort[option].add(value);
     }
 
-    document.getElementById(`${gender}`).innerHTML = "";
+    items_container.innerHTML = "";
 
     images["images"].forEach(image => {
         continue_ = true;
 
         for (let key in properties_sort) {
             if (properties_sort[key].size) {
-                continue_ = false
+                continue_ = false;
 
                 for (let index = 0; index < image["properties"][key].length; index++) {
                     if (properties_sort[key].has(image["properties"][key][index])) {
@@ -168,45 +173,7 @@ function sort(option, value) {
         }
 
         if (continue_) {
-            document.getElementById(
-                `${gender}`
-            ).innerHTML += `<div class="image-wrapper">
-                <img src="../content/sales_content/${gender}/${
-        image["name"]
-    }" />
-                <div class="props">
-                    <p class="description">${
-                        image["description"]
-                    }</p>
-                    <p class="price">$${Number(
-                        image["price"]
-                    ).toFixed(2)}</p>
-                    </div>
-                    <button onclick=addToStorage('${
-                        gender}','${image["name"]
-                    }')>Add</button>
-                    </div>`;
+            loadImage(image);
         }
     });
-}
-
-
-function saveCookies(name, value) {
-    options = {
-        path: "/",
-        "max-age": 60 * 60 * 24 * 3
-    };
-
-    let updatedCookie =
-        encodeURIComponent(name) + "=" + encodeURIComponent(value);
-
-    for (let optionKey in options) {
-        updatedCookie += "; " + optionKey;
-        let optionValue = options[optionKey];
-        if (optionValue !== true) {
-            updatedCookie += "=" + optionValue;
-        }
-    }
-
-    document.cookie = updatedCookie;
 }
