@@ -59,10 +59,18 @@
     color: white;
     background-color: transparent;
     border: none;
+    outline: none;
     height: 40px;
     min-width: 100px;
     padding-left: 10px;
     padding-right: 10px;
+    font-family: "Quicksand", serif;
+    font-size: 14px;
+}
+
+.dropdown-sort {
+    font-family: "Quicksand", serif;
+    font-size: 16px;
 }
 
 .dropdown-sortbar {

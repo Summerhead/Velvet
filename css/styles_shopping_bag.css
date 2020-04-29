@@ -1,0 +1,12 @@
+h4 {
+    margin: 30px 300px;
+    font-family: "Quicksand", serif;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+#items {
+    text-align: center;
+    font-family: "Quicksand", serif;
+    font-size: 20px;
+}

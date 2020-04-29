@@ -6,9 +6,13 @@
         <!-- <title>Header</title> -->
     </head>
     <body>
-        <h4 class="logo">
+        <!-- <div class="top-banner">
+            <span>SALES! 20% OFF EVERYTHING!</span>
+        </div> -->
+
+        <div class="logo">
             <a href="index.html">Velvet</a>
-        </h4>
+        </div>
 
         <div class="first-bar">
             <nav class="women-men">
@@ -36,7 +40,7 @@
             <nav>
                 <ul class="categories">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-link">Clothing</a>
+                        <a href="#">Clothing</a>
                         <div class="dropdown-secbar">
                             <div class="clothing"></div>
                         </div>
@@ -63,13 +67,15 @@
             </nav>
         </div>
 
-        <script src="/js/header.js"></script>
+        <script src="../js/header.js"></script>
+        <script src="../js/cookies.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
         <script>
             $(".dropdown-secbar").each(function () {
                 $(this).load("./partials/dropdown.html");
             });
 
-            checkStorage();
+            setCartNumber();
         </script>
     </body>
 </html>

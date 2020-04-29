@@ -1,9 +1,15 @@
-var storage = []
+function loadItems() {
+    var cookie = getCookie("velvet_bag");
 
-if (sessionStorage.getItem('velvet_storage')) {
-    storage = sessionStorage.getItem('velvet_storage').split(',')
-}
+    if (cookie) {
 
-for (let index = 0; index < storage.length; index += 2) {
-    document.getElementById('items').innerHTML += `<img src="../content/sales_content/${storage[index]}/${storage[index+1]}" />`
+    } else {
+        document.getElementById('items').innerHTML =
+            `<div class="no-items">
+                <p>Your Shopping Bag is Empty</p>
+            </div>
+            <div class="continue-shopping">
+                <p>CONTINUE SHOPPING</p>
+            </div>`;
+    }
 }

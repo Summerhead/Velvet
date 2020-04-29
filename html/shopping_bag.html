@@ -8,6 +8,7 @@
             href="https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand&display=swap"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="../css/styles_shopping_bag.css" />
         <link rel="stylesheet" href="../css/styles.css" />
         <title>Velvet Shopping Bag</title>
     </head>
@@ -17,12 +18,13 @@
         <h4>Shopping bag</h4>
         <div id="items"></div>
 
-        <script src="/js/load_shopping_bag.js"></script>
-        <script src="../js/storage.js"></script>
+        <script src="../js/load_shopping_bag.js"></script>
         <script src="../js/cookies.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
         <script>
             $("header").load("./partials/header.html");
+
+            loadItems();
         </script>
     </body>
 </html>

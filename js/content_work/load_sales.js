@@ -6,8 +6,9 @@ var properties_sort = {};
 
 function loadDivs(g) {
     gender = g;
-    document.querySelector("main").innerHTML = `<div id="sort-bar"></div>
-    <div id="${gender}"></div>`;
+    document.querySelector("main").innerHTML =
+        `<div id="sort-bar"></div>
+        <div id="${gender}"></div>`;
 
     items_container = document.getElementById(`${gender}`)
 
@@ -85,10 +86,11 @@ function loadSortBar() {
             fixed_key = fixed_key.replace("_", " ");
         }
 
-        sort_bar_content += `<li class='dropdown-sort' id='${key}'>
-        <button class='dropbtn' onclick=openDropDownMenu(this.parentElement.id)>${fixed_key}</button>
-        <div class='dropdown-sortbar'>
-        <ul>`;
+        sort_bar_content +=
+            `<li class='dropdown-sort' id='${key}'>
+                <button class='dropbtn' onclick=openDropDownMenu(this.parentElement.id)>${fixed_key}</button>
+                <div class='dropdown-sortbar'>
+                    <ul>`;
 
         image_properties_dict[key].forEach(value => {
             let fixed_value = value;
@@ -97,14 +99,20 @@ function loadSortBar() {
                 fixed_value = value.replace(" ", "_");
             }
 
+            let value_display = value;
+
             if (key != "brand") {
-                value = value[0].toUpperCase() + value.slice(1);
+                value_display = value[0].toUpperCase() + value.slice(1);
             }
 
-            sort_bar_content += `<li id='${fixed_value}'>
-            <a onclick="optionChosen('${fixed_value}');
-            sort('${key}', '${value}')">${value}</a></li>`;
+            sort_bar_content +=
+                `<li id='${fixed_value}'>
+                    <a onclick="optionChosen('${fixed_value}');sort('${key}', '${value}')">
+                        ${value_display}
+                    </a>
+                </li>`;
         });
+
         sort_bar_content += `</ul></div>`;
     });
 
@@ -114,12 +122,14 @@ function loadSortBar() {
 
 function openDropDownMenu(id) {
     var dropdowns = document.getElementsByClassName("dropdown-sortbar");
+
     for (let i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];
         if (openDropdown.classList.contains("show")) {
             openDropdown.classList.remove("show");
         }
     }
+
     document.querySelector(`#${id}>div`).classList.toggle("show");
 }
 
@@ -143,7 +153,6 @@ function optionChosen(value) {
 }
 
 function sort(option, value) {
-    console.log(option, value)
     if (properties_sort[option].has(value)) {
         properties_sort[option].delete(value);
     } else {

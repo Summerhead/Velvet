@@ -1,3 +1,5 @@
+var STORAGE_KEY = 'velvet_bag';
+
 function saveCookie(name, value) {
     setCookie(name, value);
     setCartNumber();
@@ -58,13 +60,7 @@ function deleteCookie(name) {
     });
 }
 
-// function read_cookie(name) {
-//     var result = document.cookie.match(new RegExp(name + '=([^;]+)'));
-//     result = JSON.parse(result[1])
-//     console.log(result);
-//     for (let i of result) {
-//         console.log(i);
-//     }
-//     result && (result = JSON.parse(result[1]));
-//     return result;
-// }
+function setCartNumber() {
+    document.getElementById('cart').getElementsByTagName('span')[0].innerHTML =
+        getCookie(STORAGE_KEY) ? (JSON.parse(getCookie(STORAGE_KEY))).length : 0;
+}
