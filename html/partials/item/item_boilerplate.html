@@ -8,23 +8,15 @@
             href="https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="../css/styles.css" />
-        <link rel="stylesheet" href="../css/styles_sales.css" />
-        <title>Velvet Sales</title>
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/styles_item.css" />
+        <title>Item Overview</title>
     </head>
-    <body>
-        <header></header>
-        <main></main>
 
-        <script src="../js/content_work/load_sales.js"></script>
-        <script src="../js/cookies.js"></script>
+    <body>
         <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
         <script>
-            $("header").load("./partials/header.html");
-
-            window.onload = function () {
-                loadDivs("women");
-            };
+            $("body").load("/html/partials/item/item_template.html");
         </script>
     </body>
 </html>

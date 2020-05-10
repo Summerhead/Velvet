@@ -1,6 +1,6 @@
 var fs = require("fs");
 
-function load_women_json() {
+function loadWomenJson() {
     var images = {
         images: [{
                 name: "14147636-1-cream.jpg",
@@ -9,7 +9,8 @@ function load_women_json() {
                 properties: {
                     product_type: ['jacket'],
                     color: ['white'],
-                    brand: ["asos"]
+                    brand: ["asos"],
+                    sizes: ["S", "M", "XL"]
                 }
             },
             {
@@ -19,7 +20,8 @@ function load_women_json() {
                 properties: {
                     product_type: ['jacket'],
                     color: ['black'],
-                    brand: ["bershka"]
+                    brand: ["bershka"],
+                    sizes: ["S", "M", "L", "XL", "XL", "XLL"]
                 }
             },
             {
@@ -29,7 +31,8 @@ function load_women_json() {
                 properties: {
                     product_type: ['coat'],
                     color: ['white'],
-                    brand: ["asos"]
+                    brand: ["asos"],
+                    sizes: ["S", "M", "L", "XL", "XL", "XLL"]
                 }
             },
             {
@@ -39,7 +42,8 @@ function load_women_json() {
                 properties: {
                     product_type: ['coat'],
                     color: ['pink'],
-                    brand: ["asos"]
+                    brand: ["asos"],
+                    sizes: ["S", "M", "L", "XL", "XL", "XLL"]
                 }
             },
             {
@@ -49,7 +53,8 @@ function load_women_json() {
                 properties: {
                     product_type: ['coat'],
                     color: ['black'],
-                    brand: ["oasis"]
+                    brand: ["oasis"],
+                    sizes: ["L", "XL", "XL", "XLL"]
                 }
             },
             {
@@ -59,7 +64,8 @@ function load_women_json() {
                 properties: {
                     product_type: ['cape'],
                     color: ['gold'],
-                    brand: ["asos"]
+                    brand: ["asos"],
+                    sizes: ["M", "L", "XL", "XL", "XLL"]
                 }
             }
         ]
@@ -77,4 +83,4 @@ function load_women_json() {
 }
 
 
-module.exports = load_women_json;
+module.exports = loadWomenJson;

@@ -6,31 +6,27 @@
         <!-- <title>Header</title> -->
     </head>
     <body>
-        <!-- <div class="top-banner">
-            <span>SALES! 20% OFF EVERYTHING!</span>
-        </div> -->
-
         <div class="logo">
-            <a href="index.html">Velvet</a>
+            <a href="/html/index.html">Velvet</a>
         </div>
 
         <div class="first-bar">
             <nav class="women-men">
                 <ul>
-                    <li><a href="women.html">Women</a></li>
-                    <li><a href="men.html">Men</a></li>
+                    <li><a href="/html/sales/women.html">Women</a></li>
+                    <li><a href="/html/sales/men.html">Men</a></li>
                 </ul>
             </nav>
             <div class="shopping">
                 <div id="cart">
-                    <a href="shopping_bag.html">
-                        <img src="../content/icons/cart.svg" />
+                    <a href="/html/shopping_bag.html">
+                        <img src="/content/icons/cart.svg" />
                         <span></span>
                     </a>
                 </div>
                 <div id="user">
                     <a href="#">
-                        <img src="../content/icons/user.svg" />
+                        <img src="/content/icons/user.svg" />
                     </a>
                 </div>
             </div>
@@ -67,12 +63,12 @@
             </nav>
         </div>
 
-        <script src="../js/header.js"></script>
-        <script src="../js/cookies.js"></script>
+        <script src="/js/header.js"></script>
+        <script src="/js/cookies.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
         <script>
             $(".dropdown-secbar").each(function () {
-                $(this).load("./partials/dropdown.html");
+                $(this).load("/html/partials/dropdown.html");
             });
 
             setCartNumber();

@@ -2,8 +2,6 @@ var STORAGE_KEY = 'velvet_bag';
 
 function saveCookie(name, value) {
     setCookie(name, value);
-    setCartNumber();
-    console.log(document.cookie);
 }
 
 function addCookie(name, value) {
@@ -23,6 +21,8 @@ function addCookie(name, value) {
         value = JSON.stringify(value);
         saveCookie(name, value);
     }
+    console.log("cookie: ", cookie);
+    setCartNumber();
 }
 
 function setCookie(name, value, days) {

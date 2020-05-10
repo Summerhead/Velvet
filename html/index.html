@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="../css/styles_index.css" />
         <title>Velvet - Online Clothing Shop</title>
     </head>
+
     <body>
         <header></header>
 
@@ -31,7 +32,7 @@
 
             <div class="trending-container">
                 <div class="trending">
-                    <h4>Explore your Taste</h4>
+                    <h4>TRENDING</h4>
                     <div class="trending-content">
                         <div class="first-line">
                             <img
@@ -49,16 +50,21 @@
                             <img
                                 src="/content/index_content/womens-grey-bridesmaid-loopback-joggers.jpg"
                             />
-                            <!-- <img
-                    src="/content/index_content/womens-white-cotton-mix-volume-sleeve-ruffle-neck-blouse.jpg"
-                /> -->
                         </div>
-                        <div class="second-line"></div>
+
+                        <div class="second-line">
+                            <img
+                                src="/content/index_content/womens-white-cotton-mix-volume-sleeve-ruffle-neck-blouse.jpg"
+                            />
+                            <img
+                                src="/content/index_content/man-in-white-jacket-with-mask-2974658.jpg"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="payments"></div>
+            <div id="payments"></div>
 
             <div id="shop-now">
                 <img
@@ -76,7 +82,8 @@
         <script>
             $("header").load("./partials/header.html");
 
-            deleteCookie("velvet_bag");
+            // deleteCookie("velvet_bag");
+            // deleteCookie("item");
         </script>
     </body>
 </html>

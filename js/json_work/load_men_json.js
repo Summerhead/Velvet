@@ -1,6 +1,6 @@
 var fs = require("fs");
 
-function load_men_json() {
+function loadMenJson() {
     var images = {
         images: [{
                 name: "27950-group-1.jpg",
@@ -9,7 +9,8 @@ function load_men_json() {
                 properties: {
                     product_type: ['hoodie', 'sweatpants', 'set'],
                     color: ['white'],
-                    brand: ["asos"]
+                    brand: ['ASOS'],
+                    sizes: ['S', 'M', 'L', 'XL']
                 }
             },
             {
@@ -19,7 +20,8 @@ function load_men_json() {
                 properties: {
                     product_type: ['hoodie', 'sweatpants', 'set'],
                     color: ['black', 'white'],
-                    brand: ["asos"]
+                    brand: ['asos'],
+                    sizes: ['S', 'M', 'L', 'XL']
                 }
             },
             {
@@ -29,7 +31,8 @@ function load_men_json() {
                 properties: {
                     product_type: ['sweatshirt'],
                     color: ['black'],
-                    brand: ["Under Armour"]
+                    brand: ['Under Armour'],
+                    sizes: ['S', 'M', 'L', 'XL']
                 }
             },
             {
@@ -39,7 +42,8 @@ function load_men_json() {
                 properties: {
                     product_type: ['sweatpants'],
                     color: ['black'],
-                    brand: ["nike"]
+                    brand: ['nike'],
+                    sizes: ['S', 'M', 'L', 'XL']
                 }
             },
             {
@@ -49,7 +53,8 @@ function load_men_json() {
                 properties: {
                     product_type: ['t-shirt'],
                     color: ['pink'],
-                    brand: ["nike"]
+                    brand: ['nike'],
+                    sizes: ['S', 'M', 'L', 'XL']
                 }
             },
             {
@@ -59,7 +64,8 @@ function load_men_json() {
                 properties: {
                     product_type: ['t-shirt'],
                     color: ['white'],
-                    brand: ["nike"]
+                    brand: ['nike'],
+                    sizes: ['S', 'M', 'L', 'XL', 'XLL']
                 }
             }
         ]
@@ -67,7 +73,17 @@ function load_men_json() {
 
     for (i = 0; i < images["images"].length; i++) {
         var obj = images["images"][i];
-        obj["id"] = Number(i + 1);
+        let index = i + 1;
+        obj["id"] = Number(index);
+
+        // createFile(index);
+    }
+
+    function createFile() {
+        fs.writeFile('/html/sales/ite.txt', 'Hello content!', function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
     }
 
     var json = JSON.stringify(images);
@@ -76,4 +92,4 @@ function load_men_json() {
     console.log("Json of men images loaded");
 }
 
-module.exports = load_men_json;
+module.exports = loadMenJson;

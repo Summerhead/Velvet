@@ -1,5 +1,4 @@
-#men,
-#women {
+#items-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(10, auto);

@@ -1,7 +1,7 @@
 main {
     width: 100%;
     max-width: 1920px;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
 }
 
 .sales-banner {
@@ -28,7 +28,7 @@ main {
 #feel-yourself {
     display: grid;
     position: relative;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 
 #feel-yourself>img {
@@ -52,7 +52,7 @@ main {
 
 @keyframes blinking {
     from {
-        color: pink
+        color: pink;
     }
 
     50% {
@@ -60,7 +60,7 @@ main {
     }
 
     to {
-        color: pink
+        color: pink;
     }
 }
 
@@ -79,17 +79,27 @@ main {
 } */
 
 .trending-container {
-    padding-top: 70px;
-    border-top: 3px solid black;
+    position: relative;
+    padding-top: 50px;
+    border-top: 1px solid black;
 }
 
-.trending-content {
-    position: relative;
-    display: grid;
-    grid-template-rows: 500px 700px;
-    padding: 100px 0 50px 0;
-    background-color: rgb(255, 181, 193);
-}
+/* .trending-title {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 80%;
+    height: 800px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+    text-align: center;
+    background-color: black;
+    background-color: rgba(252, 156, 192, 0.8);
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+} */
 
 .trending {
     position: relative;
@@ -98,22 +108,24 @@ main {
 .trending>h4 {
     position: absolute;
     text-align: center;
-    top: -50px;
+    top: -30px;
     left: 50%;
     transform: translate(-50%);
     z-index: 1;
-    font-size: 100px;
+    font-size: 25px;
     font-family: "Quicksand", serif;
-    color: white;
-    text-shadow: 11.5px 5px rgb(252, 157, 157);
+    color: rgb(0, 0, 0);
+    /* text-shadow: 8px 5px rgb(255, 173, 173); */
     white-space: nowrap;
 }
 
-.trending>h4::after {
-    width: 50px;
-    height: 60px;
-    background-color: black;
-    z-index: 1;
+.trending-content {
+    position: relative;
+    display: grid;
+    grid-template-rows: 500px 1000px;
+    row-gap: 40px;
+    padding: 50px 0 50px 0;
+    /* background-color: rgb(53, 50, 50); */
 }
 
 .first-line {
@@ -123,9 +135,26 @@ main {
     column-gap: 20px;
     max-width: 100%;
     margin: 0 50px;
+    z-index: 1;
 }
 
 .first-line>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.second-line {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 50px;
+    max-width: 100%;
+    margin: 0 180px;
+    /* z-index: 1; */
+}
+
+.second-line>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -151,9 +180,3 @@ main {
     text-align: center;
     white-space: nowrap;
 }
-
-/* #shop-now>a>h1 {
-    color: black;
-    text-decoration: none;
-    font-size: 17vw;
-} */

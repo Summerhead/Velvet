@@ -8,9 +8,9 @@ function loadDivs(g) {
     gender = g;
     document.querySelector("main").innerHTML =
         `<div id="sort-bar"></div>
-        <div id="${gender}"></div>`;
+        <div id="items-container"></div>`;
 
-    items_container = document.getElementById(`${gender}`)
+    items_container = document.getElementById("items-container");
 
     loadContent();
 }
@@ -25,14 +25,14 @@ function loadContent() {
         }
     };
 
-    xmlhttp.open("GET", `../js/json_work/${gender}_images.json`, true);
+    xmlhttp.open("GET", `/js/json_work/${gender}_images.json`, true);
     xmlhttp.send();
 }
 
 function loadImages(images) {
     var properties;
 
-    images["images"].forEach(image => {
+    images.forEach(image => {
         properties = image["properties"];
 
         Object.keys(properties).forEach(key => {
@@ -61,12 +61,12 @@ function loadImages(images) {
 }
 
 function loadImage(image) {
-    stringified_image = JSON.stringify([gender, image]).replace(/ /g, '&#32;')
+    stringified_image = JSON.stringify(image).replace(/ /g, '&#32;')
 
     items_container.innerHTML +=
         `<div class="image-wrapper">
-            <a href="item.html" onclick="saveCookie('item','${stringified_image}')">
-                <img src="../content/sales_content/${gender}/${image["name"]}" />
+            <a href="item/${image["id"]}.html" onclick=saveCookie('item','${stringified_image}')>
+                <img src="/content/sales_content/${gender}/${image["name"]}" />
             </a>
             <div class="props">
                 <p class="description">${image["description"]}</p>
@@ -161,7 +161,7 @@ function sort(option, value) {
 
     items_container.innerHTML = "";
 
-    images["images"].forEach(image => {
+    images.forEach(image => {
         continue_ = true;
 
         for (let key in properties_sort) {
