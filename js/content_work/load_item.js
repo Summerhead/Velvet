@@ -4,8 +4,9 @@ function loadItem() {
     let itemCodeWindowLocation = getItemCodeWindowLocation();
     if (item && item['id'] == itemCodeWindowLocation) {
         setItem(item);
+        console.log("item from cookies: ", item);
     } else {
-        console.log("item: ", getItemFromJSON(itemCodeWindowLocation));
+        getItemFromJSON(itemCodeWindowLocation);
     }
 }
 
@@ -40,14 +41,12 @@ function setItem(item) {
 }
 
 function getItemFromJSON(id) {
-
     let genders = ["men", "women"];
     let images = [];
     let responses = 0;
 
     for (let index in genders) {
-        var xmlhttp = new XMLHttpRequest();
-
+        let xmlhttp = new XMLHttpRequest();
 
         let gender = genders[index];
         console.log(gender);
@@ -64,6 +63,7 @@ function getItemFromJSON(id) {
                 if (responses == genders.length) {
                     let item = getImage(images);
                     setItem(item);
+                    return item;
                 }
             }
         };
@@ -75,7 +75,7 @@ function getItemFromJSON(id) {
             for (itemIndex in genderItems) {
                 let item = genderItems[itemIndex];
                 if (item['id'] == id) {
-                    console.log("item: ", item);
+                    console.log("item from JSON: ", item);
                     return item;
                 }
             }

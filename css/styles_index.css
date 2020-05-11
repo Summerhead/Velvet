@@ -1,10 +1,4 @@
-main {
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-}
-
-.sales-banner {
+#sales-banner {
     position: relative;
     width: 100%;
     height: 120px;
@@ -14,7 +8,7 @@ main {
     border-bottom: 2px solid white;
 }
 
-.sales-banner>span {
+#sales-banner>span {
     position: absolute;
     text-align: center;
     top: 50%;
@@ -78,7 +72,7 @@ main {
     }
 } */
 
-.trending-container {
+#trending-container {
     position: relative;
     padding-top: 50px;
     border-top: 1px solid black;
@@ -101,11 +95,11 @@ main {
     border-right: 3px solid black;
 } */
 
-.trending {
+#trending {
     position: relative;
 }
 
-.trending>h4 {
+#trending-header>h4 {
     position: absolute;
     text-align: center;
     top: -30px;
@@ -119,16 +113,17 @@ main {
     white-space: nowrap;
 }
 
-.trending-content {
+#trending-content {
     position: relative;
     display: grid;
-    grid-template-rows: 500px 1000px;
+    /* grid-template-rows: 500px 1000px; */
+    grid-template-rows: auto auto;
     row-gap: 40px;
     padding: 50px 0 50px 0;
     /* background-color: rgb(53, 50, 50); */
 }
 
-.first-line {
+#first-line {
     position: relative;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -138,26 +133,57 @@ main {
     z-index: 1;
 }
 
-.first-line>img {
+.trending-images-container {
+    position: relative;
+    max-height: 100%;
+}
+
+#first-line>.trending-images-container>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.second-line {
+#first-line>.trending-images-container>button {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -100%);
+    width: 90%;
+    height: 70px;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 30px;
+    font-family: "Quicksand", serif;
+}
+
+#second-line {
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 50px;
     max-width: 100%;
-    margin: 0 180px;
+    margin: 0 230px;
     /* z-index: 1; */
 }
 
-.second-line>img {
+#second-line>.trending-images-container>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+#second-line>.trending-images-container>button {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, 0%);
+    width: 70%;
+    height: 100px;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 30px;
+    font-family: "Quicksand", serif;
 }
 
 #shop-now {

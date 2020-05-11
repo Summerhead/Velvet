@@ -1,8 +1,8 @@
-var gender;
-var images;
-var items_container;
-var image_properties_dict = {};
-var properties_sort = {};
+let gender;
+let images;
+let items_container;
+let image_properties_dict = {};
+let properties_sort = {};
 
 function loadDivs(g) {
     gender = g;
@@ -11,8 +11,40 @@ function loadDivs(g) {
         <div id="items-container"></div>`;
 
     items_container = document.getElementById("items-container");
-
+    setPagination();
     loadContent();
+}
+
+function setPagination() {
+    let xmlhttp = new XMLHttpRequest(),
+        content;
+
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            content = this.responseText;
+            console.log("content: ", content);
+
+            let pages = getPageNumber(gender);
+        }
+    };
+
+    xmlhttp.open("GET", `../../pages.txt`, true);
+    xmlhttp.send();
+
+    function getPageNumber(gender) {
+        let lines = content.split(';');
+
+        let variable, value;
+        for (let line in lines) {
+            variable = line.split('=')[0];
+            value = line.split('=')[1];
+
+            let variableGender = variable.split('_')[0];
+            if (gender == variableGender.toLowerCase()) {
+                return value;
+            }
+        }
+    }
 }
 
 function loadContent() {
@@ -37,7 +69,6 @@ function loadImages(images) {
 
         Object.keys(properties).forEach(key => {
             attributes = properties[key];
-
             properties_sort[key] = new Set();
 
             if (key in image_properties_dict) {

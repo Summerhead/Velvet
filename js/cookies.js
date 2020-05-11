@@ -21,6 +21,7 @@ function addCookie(name, value) {
         value = JSON.stringify(value);
         saveCookie(name, value);
     }
+
     console.log("cookie: ", cookie);
     setCartNumber();
 }
