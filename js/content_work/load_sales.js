@@ -1,8 +1,8 @@
 let gender;
 let images;
-let items_container;
-let image_properties_dict = {};
-let properties_sort = {};
+let itemsContainer;
+let imagePropertiesDict = {};
+let propertiesSort = {};
 
 function loadDivs(g) {
     gender = g;
@@ -10,7 +10,7 @@ function loadDivs(g) {
         `<div id="sort-bar"></div>
         <div id="items-container"></div>`;
 
-    items_container = document.getElementById("items-container");
+    itemsContainer = document.getElementById("items-container");
     setPagination();
     loadContent();
 }
@@ -69,11 +69,11 @@ function loadImages(images) {
 
         Object.keys(properties).forEach(key => {
             attributes = properties[key];
-            properties_sort[key] = new Set();
+            propertiesSort[key] = new Set();
 
-            if (key in image_properties_dict) {
+            if (key in imagePropertiesDict) {
                 attributes.forEach(attribute => {
-                    image_properties_dict[key].add(attribute);
+                    imagePropertiesDict[key].add(attribute);
                 });
             } else {
                 var values = new Set();
@@ -81,7 +81,7 @@ function loadImages(images) {
                 attributes.forEach(attribute => {
                     values.add(attribute);
                 });
-                image_properties_dict[key] = values;
+                imagePropertiesDict[key] = values;
             }
         });
 
@@ -92,63 +92,63 @@ function loadImages(images) {
 }
 
 function loadImage(image) {
-    stringified_image = JSON.stringify(image).replace(/ /g, '&#32;')
+    stringifiedImage = JSON.stringify(image).replace(/ /g, '&#32;')
 
-    items_container.innerHTML +=
+    itemsContainer.innerHTML +=
         `<div class="image-wrapper">
-            <a href="item/${image["id"]}.html" onclick=saveCookie('item','${stringified_image}')>
+            <a href="item/${image["id"]}.html" onclick=saveCookie('item','${stringifiedImage}')>
                 <img src="/content/sales_content/${gender}/${image["name"]}" />
             </a>
             <div class="props">
                 <p class="description">${image["description"]}</p>
                 <p class="price">$${Number(image["price"]).toFixed(2)}</p>
             </div>
-            <button onclick=addCookie('velvet_bag','${stringified_image}')>Add</button>
+            <button onclick=addCookie('velvet_bag','${stringifiedImage}')>Add</button>
         </div>`;
 }
 
 function loadSortBar() {
-    var sort_bar_content = `<ul><li><button>Sort</button></li>`;
+    var sortBarContent = `<ul><li><button>Sort</button></li>`;
 
-    Object.keys(image_properties_dict).forEach(key => {
+    Object.keys(imagePropertiesDict).forEach(key => {
         var fixed_key = key[0].toUpperCase() + key.slice(1);
 
         if (key.indexOf("_") != -1) {
             fixed_key = fixed_key.replace("_", " ");
         }
 
-        sort_bar_content +=
+        sortBarContent +=
             `<li class='dropdown-sort' id='${key}'>
                 <button class='dropbtn' onclick=openDropDownMenu(this.parentElement.id)>${fixed_key}</button>
                 <div class='dropdown-sortbar'>
                     <ul>`;
 
-        image_properties_dict[key].forEach(value => {
-            let fixed_value = value;
+        imagePropertiesDict[key].forEach(value => {
+            let fixedValue = value;
 
             if (value.indexOf(" ") != -1) {
-                fixed_value = value.replace(" ", "_");
+                fixedValue = value.replace(" ", "_");
             }
 
-            let value_display = value;
+            let valueDisplay = value;
 
             if (key != "brand") {
-                value_display = value[0].toUpperCase() + value.slice(1);
+                valueDisplay = value[0].toUpperCase() + value.slice(1);
             }
 
-            sort_bar_content +=
-                `<li id='${fixed_value}'>
-                    <a onclick="optionChosen('${fixed_value}');sort('${key}', '${value}')">
-                        ${value_display}
+            sortBarContent +=
+                `<li id='${fixedValue}'>
+                    <a onclick="optionChosen('${fixedValue}');sort('${key}', '${value}')">
+                        ${valueDisplay}
                     </a>
                 </li>`;
         });
 
-        sort_bar_content += `</ul></div>`;
+        sortBarContent += `</ul></div>`;
     });
 
-    sort_bar_content += `</ul>`;
-    document.getElementById("sort-bar").innerHTML = sort_bar_content;
+    sortBarContent += `</ul>`;
+    document.getElementById("sort-bar").innerHTML = sortBarContent;
 }
 
 function openDropDownMenu(id) {
@@ -184,23 +184,23 @@ function optionChosen(value) {
 }
 
 function sort(option, value) {
-    if (properties_sort[option].has(value)) {
-        properties_sort[option].delete(value);
+    if (propertiesSort[option].has(value)) {
+        propertiesSort[option].delete(value);
     } else {
-        properties_sort[option].add(value);
+        propertiesSort[option].add(value);
     }
 
-    items_container.innerHTML = "";
+    itemsContainer.innerHTML = "";
 
     images.forEach(image => {
         continue_ = true;
 
-        for (let key in properties_sort) {
-            if (properties_sort[key].size) {
+        for (let key in propertiesSort) {
+            if (propertiesSort[key].size) {
                 continue_ = false;
 
                 for (let index = 0; index < image["properties"][key].length; index++) {
-                    if (properties_sort[key].has(image["properties"][key][index])) {
+                    if (propertiesSort[key].has(image["properties"][key][index])) {
                         continue_ = true;
                         break;
                     }
