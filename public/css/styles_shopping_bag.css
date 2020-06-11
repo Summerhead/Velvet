@@ -1,0 +1,156 @@
+main {
+    position: relative;
+}
+
+main>h4 {
+    margin: 30px 300px;
+    font-family: "Quicksand", serif;
+    font-size: 26px;
+    white-space: nowrap;
+}
+
+button {
+    cursor: pointer;
+}
+
+#no-items {
+    margin-top: 60px;
+    text-align: center;
+    font-family: "Quicksand", serif;
+    font-size: 20px;
+}
+
+#bag-is-empty {
+    margin-bottom: 20px;
+}
+
+#continue-shopping {
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#checkout-button {
+    position: absolute;
+    top: 0;
+    left: 70%;
+    padding: 5px 50px;
+    border: 0ch;
+    font-family: "Quicksand", serif;
+    font-size: 20px;
+    background-color: rgb(255, 160, 192);
+}
+
+#items-table {
+    border-collapse: collapse;
+    font-family: "Quicksand", serif;
+    margin: 80px auto 0 auto;
+}
+
+#items-table-header {
+    background-color: rgb(214, 205, 197);
+    font-size: 13px;
+}
+
+#item-header {
+    max-width: 100px;
+    padding: 5px 0;
+}
+
+#price-header {
+    min-width: 200px;
+}
+
+.item-row {
+    position: relative;
+}
+
+.image-cell {
+    position: relative;
+    text-align: center;
+    padding: 10px 200px;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.first-body-row>.image-cell {
+    padding-top: 30px;
+}
+
+.image-cell>img {
+    /* width: 30%; */
+    height: 300px;
+    object-fit: cover;
+}
+
+.price-cell {
+    display: block;
+    position: relative;
+    padding: 40px 70px;
+}
+
+.price-cell>div {
+    text-align: center;
+}
+
+.remove-item {
+    position: absolute;
+    top: 190%;
+    left: 60%;
+    border-style: none;
+    background-color: white;
+    border: 1px solid rgb(255, 158, 158);
+    border-radius: 10%;
+    padding: 5px 10px;
+}
+
+#checkout-tab {
+    display: none;
+    position: fixed;
+    width: 700px;
+    height: 500px;
+    bottom: 50%;
+    right: 50%;
+    z-index: 1;
+    transform: translate(50%, 50%);
+    background-color: rgb(255, 125, 125);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+}
+
+#checkout-tab-container {
+    position: absolute;
+    /* margin: 200px auto 0 auto; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+}
+
+#close-checkout-button {
+    position: absolute;
+    font-size: 25px;
+    top: 16px;
+    right: 20px;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    font-family: "Quicksand", serif;
+    font-size: 18px;
+}
+
+#checkout-tab-checkout-button {
+    position: relative;
+    margin: 40px 0 0 0;
+    width: 40%;
+    height: 40px;
+    left: 50%;
+    transform: translate(-50%);
+    border: 1px solid black;
+    font-family: "Quicksand", serif;
+    font-size: 20px;
+    background-color: rgb(255, 160, 192);
+}

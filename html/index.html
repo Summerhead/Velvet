@@ -8,8 +8,12 @@
             href="https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="/css/styles.css" />
-        <link rel="stylesheet" href="/css/styles_index.css" />
+        <link rel="stylesheet" type="text/css" href="/public/css/styles.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/public/css/styles_index.css"
+        />
         <title>Velvet - Online Clothing Shop</title>
     </head>
 
@@ -25,7 +29,7 @@
 
             <div id="feel-yourself">
                 <img
-                    src="/content/index_content/adult_attractive_beautiful_beauty_blonde_hair.jpg"
+                    src="/public/content/index_content/adult_attractive_beautiful_beauty_blonde_hair.jpg"
                 />
                 <a href="#"><h1>Feel Yourself</h1></a>
             </div>
@@ -40,31 +44,31 @@
                         <div id="first-line">
                             <div class="trending-images-container">
                                 <img
-                                    src="/content/index_content/mens-black-man-official-hoodie-with-bandana-snood.jpg"
+                                    src="/public/content/index_content/mens-black-man-official-hoodie-with-bandana-snood.jpg"
                                 />
                                 <button>QUICK BUY</button>
                             </div>
                             <div class="trending-images-container">
                                 <img
-                                    src="/content/index_content/mens-black-spray-on-skinny-biker-jeans-with-zips.jpg"
+                                    src="/public/content/index_content/mens-black-spray-on-skinny-biker-jeans-with-zips.jpg"
                                 />
                                 <button>QUICK BUY</button>
                             </div>
                             <div class="trending-images-container">
                                 <img
-                                    src="/content/index_content/mens-mint-utility-pocket-cargo-jogger-trouser.jpg"
+                                    src="/public/content/index_content/mens-mint-utility-pocket-cargo-jogger-trouser.jpg"
                                 />
                                 <button>QUICK BUY</button>
                             </div>
                             <div class="trending-images-container">
                                 <img
-                                    src="/content/index_content/mens-white-reflective-detail-lace-up-trainer.jpg"
+                                    src="/public/content/index_content/mens-white-reflective-detail-lace-up-trainer.jpg"
                                 />
                                 <button>QUICK BUY</button>
                             </div>
                             <div class="trending-images-container">
                                 <img
-                                    src="/content/index_content/womens-grey-bridesmaid-loopback-joggers.jpg"
+                                    src="/public/content/index_content/womens-grey-bridesmaid-loopback-joggers.jpg"
                                 />
                                 <button>QUICK BUY</button>
                             </div>
@@ -73,13 +77,13 @@
                         <div id="second-line">
                             <div class="trending-images-container">
                                 <img
-                                    src="/content/index_content/womens-white-cotton-mix-volume-sleeve-ruffle-neck-blouse.jpg"
+                                    src="/public/content/index_content/womens-white-cotton-mix-volume-sleeve-ruffle-neck-blouse.jpg"
                                 />
                                 <button>SHOP</button>
                             </div>
                             <div class="trending-images-container">
                                 <img
-                                    src="/content/index_content/man-in-white-jacket-with-mask-2974658.jpg"
+                                    src="/public/content/index_content/man-in-white-jacket-with-mask-2974658.jpg"
                                 />
                                 <button>SHOP</button>
                             </div>
@@ -92,7 +96,7 @@
 
             <div id="shop-now">
                 <img
-                    src="/content/index_content/woman-in-white-long-sleeved-dress-1030895.png"
+                    src="/public/content/index_content/woman-in-white-long-sleeved-dress-1030895.png"
                 />
                 <a href="#"><h1>Shop Now</h1></a>
             </div>
@@ -100,14 +104,11 @@
 
         <footer></footer>
 
-        <script src="/js/content_work/load_index.js"></script>
-        <script src="/js/cookies.js"></script>
+        <script src="/public/js/content_work/load_index.js"></script>
+        <script src="/public/js/cookies.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
         <script>
-            $("header").load("./partials/header.html");
-
-            // deleteCookie("velvet_bag");
-            // deleteCookie("item");
+            $("header").load("/html/partials/header.html");
         </script>
     </body>
 </html>

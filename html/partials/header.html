@@ -20,13 +20,13 @@
             <div class="shopping">
                 <div id="cart">
                     <a href="/html/shopping_bag.html">
-                        <img src="/content/icons/cart.svg" />
+                        <img src="/public/content/icons/cart.svg" />
                         <span></span>
                     </a>
                 </div>
                 <div id="user">
                     <a href="#">
-                        <img src="/content/icons/user.svg" />
+                        <img src="/public/content/icons/user.svg" />
                     </a>
                 </div>
             </div>
@@ -67,8 +67,8 @@
         <script src="/js/cookies.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script> -->
         <script>
-            var headerJS = "/js/header.js",
-                cookiesJS = "/js/cookies.js",
+            var headerJS = "/public/js/header.js",
+                cookiesJS = "/public/js/cookies.js",
                 jqueryJS = "https://code.jquery.com/jquery-3.5.0.min.js";
             $.getScript(headerJS);
             $.getScript(cookiesJS);
@@ -77,6 +77,7 @@
             $(".dropdown-secbar").each(function () {
                 $(this).load("/html/partials/dropdown.html");
             });
+
             setCartNumber();
         </script>
     </body>
