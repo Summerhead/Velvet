@@ -138,7 +138,7 @@ let images = {
 };
 
 function loadJSONs() {
-    fs.readFile('../../html/partials/item/item_boilerplate.html', 'utf-8', function (err, itemPageContent) {
+    fs.readFile('../../../html/partials/item/item_boilerplate.html', 'utf-8', function (err, itemPageContent) {
         if (err) throw err;
 
         let g_index = 1,
@@ -151,52 +151,23 @@ function loadJSONs() {
                 let item = obj[i];
                 item["id"] = Number(g_index);
                 item["gender"] = key_gender;
-                createFile(g_index, itemPageContent);
 
                 g_index++;
                 index++;
             }
 
-            // pageContent = [pageContent, key_gender.toUpperCase(), '_', 'PAGES', '=', getPages(index), ';'].join('');
             writeToJSON(key_gender, obj);
-
             index = 0;
         }
-
-        // writePages(pageContent);
     })
-}
-
-function createFile(index, content) {
-    fs.writeFile(`../../html/sales/item/${index}.html`, content, function (err) {
-        if (err) throw err;
-
-        console.log(`html/sales/item/${index}.html saved.`);
-    });
 }
 
 function writeToJSON(gender, obj) {
     var json = JSON.stringify(obj);
-    console.log("json: ", json);
-    fs.writeFile(`${gender}_images.json`, json);
+    console.log("json:", json);
+    fs.writeFile(`${gender}s_images.json`, json);
 
     console.log(`Json of ${gender} images loaded.`);
-}
-
-function getPages(imagesNum) {
-    let pages = Math.ceil(imagesNum / 4);
-    console.log(imagesNum / 4);
-    return pages;
-}
-
-function writePages(content) {
-    console.log("content: ", content);
-
-    fs.writeFile(`../../pages.txt`, content, function (err) {
-        if (err) throw err;
-
-        console.log(`pages.txt saved.`);
-    });
 }
 
 loadJSONs();

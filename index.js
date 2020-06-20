@@ -1,16 +1,23 @@
-var mysql2 = require("mysql2");
-var express = require("express");
-var session = require("express-session");
-var bodyParser = require("body-parser");
-var path = require("path");
-var app = express();
+const mysql2 = require("mysql2");
+const express = require("express");
+const session = require("express-session");
+const bodyParser = require("body-parser");
+const path = require("path");
+const fs = require("fs");
 
-var connection = mysql2.createConnection({
+const app = express();
+
+const walk = require("walk");
+const walker = walk.walk("./html", {
+    followLinks: false
+});
+
+const connection = mysql2.createConnection({
     host: "localhost",
     port: 3308,
     user: "root",
     password: "usbw",
-    database: "nodelogin",
+    database: "velvet online clothing shop",
 });
 
 app.use(
@@ -29,34 +36,42 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.use('/public', express.static('public'));
-app.use('/html', express.static('html'));
+app.use("/public", express.static("public"));
+app.use("/html/partials", express.static("html/partials"));
 
-app.get("/", function (request, response) {
-    response.sendFile(path.join(__dirname + "/html/index.html"));
+walker.on("file", function (root, stat, next) {
+    if (!(root.split('\\')).includes('partials')) {
+        let dirpath = path.join(root, stat.name);
+        let link = dirpath.replace("html\\", "/").replace(".html", "").split('\\').join('/');
+
+        if (link == '/index') {
+            link = '/';
+        }
+
+        app.get(link, function (request, response) {
+            response.sendFile(path.join(__dirname, dirpath));
+        });
+
+        next();
+    }
 });
 
-app.get("/link", function (request, response) {
-    response.sendFile(path.join(__dirname + "/link.html"));
-    console.log("request: ", request.body);
-    console.log("response: ", response.body);
-});
+app.post("/bag", function (request, response) {
+    var address = request.body.address;
+    console.log("address:", address);
 
-app.post("/auth", function (request, response) {
-    var username = request.body.username;
-    var password = request.body.password;
-    console.log(username, password);
-
-    if (username && password) {
+    if (address) {
         connection.query(
-            `SELECT * FROM accounts WHERE username = '${username}' AND password = '${password}'`,
+            `INSERT INTO orders (address) VALUES ('${address}')`,
             function (error, results, fields) {
-                console.log(error);
-                console.log(results);
-                if (results.length > 0) {
+                console.log("error:", error);
+                console.log("results:", results);
+                // console.log("fields:", fields);
+                if (!error) {
                     request.session.loggedin = true;
-                    request.session.username = username;
-                    response.redirect("/home");
+                    request.session.address = address;
+
+                    response.redirect('/bag');
                 } else {
                     response.send("Incorrect Username and/or Password!");
                 }
@@ -64,18 +79,9 @@ app.post("/auth", function (request, response) {
             }
         );
     } else {
-        response.send("Please enter Username and Password!");
+        response.send("Please enter your address!");
         response.end();
     }
 });
 
-app.get("/home", function (request, response) {
-    if (request.session.loggedin) {
-        response.send("Welcome back, " + request.session.username + "!");
-    } else {
-        response.send("Please login to view this page!");
-    }
-    response.end();
-});
-
-app.listen(5500, "127.0.0.1");
+app.listen(5500);
