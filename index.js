@@ -17,7 +17,7 @@ const connection = mysql2.createConnection({
     port: 3308,
     user: "root",
     password: "usbw",
-    database: "velvet online clothing shop",
+    database: "velvet_online_clothing_shop",
 });
 
 app.use(

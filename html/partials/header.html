@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Header</title>
-    </head> -->
-    <body>
+
+<body>
+    <div id="navbar">
         <div class="logo">
             <a href="/">Velvet</a>
         </div>
@@ -62,23 +59,22 @@
                 </ul>
             </nav>
         </div>
+    </div>
 
-        <!-- <script src="/js/header.js"></script>
-        <script src="/js/cookies.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script> -->
-        <script>
-            var headerJS = "/public/js/header.js",
-                cookiesJS = "/public/js/cookies.js",
-                jqueryJS = "https://code.jquery.com/jquery-3.5.0.min.js";
-            $.getScript(headerJS);
-            $.getScript(cookiesJS);
-            $.getScript(jqueryJS);
+    <script>
+        var headerJS = "/public/js/header.js",
+            cookiesJS = "/public/js/cookies.js",
+            jqueryJS = "https://code.jquery.com/jquery-3.5.0.min.js";
+        $.getScript(headerJS);
+        $.getScript(cookiesJS);
+        $.getScript(jqueryJS);
 
-            $(".dropdown-secbar").each(function () {
-                $(this).load("/html/partials/dropdown.html");
-            });
+        $(".dropdown-secbar").each(function () {
+            $(this).load("/html/partials/dropdown.html");
+        });
 
-            setCartNumber();
-        </script>
-    </body>
+        setCartNumber();
+    </script>
+</body>
+
 </html>
