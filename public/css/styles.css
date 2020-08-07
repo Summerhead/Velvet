@@ -32,7 +32,7 @@ main {
 .first-bar {
     height: 70px;
     display: flex;
-    background-color: #FFF3F3;
+    background-color: #ffffff;
     align-items: center;
     padding: 0 100px;
     justify-content: space-between;

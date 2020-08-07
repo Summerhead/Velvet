@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" type="text/css" href="/public/css/styles.css" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="/public/css/styles_sales.css"
-        />
-        <title>Velvet Sales</title>
-    </head>
 
-    <body>
-        <header></header>
-        <main></main>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/public/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/public/css/styles_sales.css" />
+    <title>Velvet Sales</title>
+</head>
 
-        <script src="/public/js/content_work/load_sales.js"></script>
-        <script src="/public/js/cookies.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-        <script>
-            $("header").load("/html/partials/header.html");
+<body>
+    <header></header>
 
-            window.onload = function () {
-                loadDivs("mens");
-            };
-        </script>
-    </body>
+    <main>
+        <div id="sort-bar"></div>
+        <div id="items-container"></div>
+        <!-- <button id='btn' width=100px height=20px>Click</button>
+        <button id='btn2' width=100px height=20px>Click2</button>
+        <button id='btn3' width=100px height=20px>Click3</button> -->
+    </main>
+
+    <script src="/public/js/content_work/load_sales.js"></script>
+    <script src="/public/js/cookies.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script>
+        $("header").load("/html/partials/header.html");
+
+        window.onload = function () {
+            loadDivs("mens");
+        };
+    </script>
+</body>
+
 </html>

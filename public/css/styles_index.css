@@ -14,14 +14,18 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: white;
     font-family: "Quicksand", serif;
-    font-size: 50px;
+    font-size: 51px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    /* line-height: 64px; */
     white-space: nowrap;
 }
 
 #first-section {
     height: 859px;
-    margin-bottom: 50px;
+    margin-bottom: 91px;
     overflow: hidden;
 }
 
@@ -44,21 +48,22 @@
     text-align: center;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -54%);
     font-family: "Quicksand", serif;
 }
 
 #first-section-overlay>.captions {
-    margin-bottom: 141px;
+    margin-bottom: 97px;
 }
 
 #first-section-overlay>.captions>h1 {
-    margin-bottom: 13px;
+    /* margin-bottom: 13px; */
     z-index: 1;
-    font-size: 230px;
+    font-size: 12.5em;
+    /* font-style: italic; */
     text-shadow: 11.5px 5px white;
     white-space: nowrap;
-    animation: 3s infinite blinking;
+    animation: 2s infinite blinking;
     animation-fill-mode: forwards;
 }
 
@@ -77,8 +82,9 @@
 }
 
 #first-section-overlay>.captions>p {
-    font-size: 80px;
+    font-size: 5em;
     font-weight: bold;
+    font-style: italic;
     color: white;
     text-shadow:
         -1px -1px 0 #000,
@@ -88,11 +94,12 @@
 }
 
 #first-section-overlay>button {
+    position: relative;
     width: 465px;
     height: 81px;
     border: 1px solid black;
     background-color: white;
-    font-size: 50px;
+    font-size: 3.125em;
     font-family: "Quicksand", serif;
     font-weight: bold;
     outline: none;
@@ -101,8 +108,8 @@
 
 #trending-container {
     position: relative;
-    padding-top: 50px;
-    border-top: 1px solid black;
+    margin: 0 30px 100px 30px;
+    border-top: 2px solid #D3CCCC;
 }
 
 #trending {
@@ -110,14 +117,12 @@
 }
 
 #trending-header>h4 {
-    position: absolute;
+    /* position: absolute; */
+    margin: 36px 0 36px 0;
     text-align: center;
-    top: -30px;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 1;
     font-size: 25px;
     font-family: "Quicksand", serif;
+    font-weight: lighter;
     color: rgb(0, 0, 0);
     white-space: nowrap;
 }
@@ -126,18 +131,17 @@
     position: relative;
     display: grid;
     grid-template-rows: auto auto;
-    row-gap: 40px;
-    padding: 50px 0 50px 0;
+    row-gap: 37px;
+    margin: 0 70px 0 70px;
 }
 
 #first-line {
     position: relative;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    column-gap: 20px;
+    column-gap: 25px;
     max-width: 100%;
-    margin: 0 50px;
-    z-index: 1;
+    height: 500px;
 }
 
 .trending-images-container {
@@ -167,10 +171,10 @@
 #second-line {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 35px;
     max-width: 100%;
-    margin: 0 230px;
+    height: 950px;
 }
 
 #second-line>.trending-images-container>img {

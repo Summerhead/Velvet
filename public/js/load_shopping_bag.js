@@ -70,19 +70,25 @@ function loadShoppingBag() {
             main.removeChild(checkoutButton);
         }
 
-        main.innerHTML +=
-            `<div id="no-items">
-                <div id="bag-is-empty">
-                    Your Shopping Bag is Empty
-                </div>
-                <button onclick="location.href='/sales/womens'" id="continue-shopping">
-                    &#9668; CONTINUE SHOPPING
-                </button>
-            </div>`;
+        loadEmptyBag();
     }
 
     checkoutButton = document.getElementById("checkout-button");
     checkoutTab = document.getElementById("checkout-tab");
+}
+
+function loadEmptyBag() {
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            main.innerHTML += this.responseText;
+        }
+    };
+
+    xmlhttp.open("GET", `/html/partials/bag/empty_bag.html`, true);
+    xmlhttp.send();
 }
 
 function createCheckoutButton() {
@@ -139,7 +145,7 @@ window.onclick = function (event) {
 function checkResponse() {
     $.ajax({
         url: 'bag',
-        type: "POST",
+        type: 'POST',
         data: 'your form data',
         success: function (response) {
             showSuccessfullOrderTab();

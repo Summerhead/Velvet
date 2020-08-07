@@ -1,59 +1,96 @@
 let gender;
-let images;
+let items;
 let itemsContainer;
 let imagePropertiesDict = {};
 let propertiesSort = {};
 
 function loadDivs(g) {
     gender = g;
-    document.querySelector("main").innerHTML =
-        `<div id="sort-bar"></div>
-        <div id="items-container"></div>`;
+    // document.querySelector("main").innerHTML =
+    //     `<div id="sort-bar"></div>
+    //     <div id="items-container"></div>`;
 
     itemsContainer = document.getElementById("items-container");
     // setPagination();
-    loadContent();
+    // loadContent();
+    contentQuery();
 }
 
-// function setPagination() {
-//     let xmlhttp = new XMLHttpRequest(),
-//         content;
+async function contentQuery() {
+    let resp = await fetch(document.location.pathname, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            url: document.location.search.substring(1)
+        })
+    });
+    let data = await resp.json();
+    console.log('data:', data);
 
-//     xmlhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             content = this.responseText;
-//             console.log("content: ", content);
+    // items = data['results'];
+}
 
-//             let pages = getPageNumber(gender);
-//         }
-//     };
+function insertParam(key, value) {
+    key = encodeURIComponent(key);
+    value = encodeURIComponent(value);
 
-//     xmlhttp.open("GET", `../../pages.txt`, true);
-//     xmlhttp.send();
+    // kvp looks like ['key1=value1', 'key2=value2', ...]
+    var kvp = document.location.search.substr(1).split('&');
+    if (!kvp) {
+        console.log('here');
+    }
+    let i = 0;
 
-//     function getPageNumber(gender) {
-//         let lines = content.split(';');
+    for (; i < kvp.length; i++) {
+        console.log(i, key, value, kvp[i]);
+        if (kvp[i].startsWith(key + '=')) {
+            let pair = kvp[i].split('=');
+            pair[1] = value;
+            kvp[i] = pair.join('=');
+            break;
+        }
+    }
 
-//         let variable, value;
-//         for (let line in lines) {
-//             variable = line.split('=')[0];
-//             value = line.split('=')[1];
+    if (i >= kvp.length) {
+        let index = 0;
+        if (kvp[0]) {
+            index = kvp.length;
+        }
+        kvp[index] = [key, value].join('=');
+    }
 
-//             let variableGender = variable.split('_')[0];
-//             if (gender == variableGender.toLowerCase()) {
-//                 return value;
-//             }
-//         }
-//     }
-// }
+    let params = kvp.join('&');
+    console.log(kvp, params);
+
+    return params;
+}
+
+function reloadPage(params) {
+    document.location.search = params;
+}
+
+// document.getElementById('btn').onclick = () => {
+//     let params = insertParam('hui', 'piz da');
+//     reloadPage(params);
+// };
+// document.getElementById('btn2').onclick = () => {
+//     let params = insertParam('r', '123=');
+//     reloadPage(params);
+// };
+// document.getElementById('btn3').onclick = () => {
+//     let params = insertParam('r', '567');
+//     reloadPage(params);
+// };
 
 function loadContent() {
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            images = JSON.parse(this.responseText);
-            loadImages(images);
+            items = JSON.parse(this.responseText);
+            loadImages(items);
         }
     };
 
@@ -61,10 +98,10 @@ function loadContent() {
     xmlhttp.send();
 }
 
-function loadImages(images) {
+function loadImages(items) {
     var properties;
 
-    images.forEach(image => {
+    items.forEach(image => {
         properties = image["properties"];
 
         Object.keys(properties).forEach(key => {
@@ -84,15 +121,13 @@ function loadImages(images) {
                 imagePropertiesDict[key] = values;
             }
         });
-
         loadImage(image);
     });
-
     loadSortBar();
 }
 
 function loadImage(image) {
-    stringifiedImage = JSON.stringify(image).replace(/ /g, '&#32;')
+    stringifiedImage = JSON.stringify(image).replace(/ /g, '&#32;');
 
     itemsContainer.innerHTML +=
         `<div class="image-wrapper">
@@ -193,7 +228,7 @@ function sort(option, value) {
 
     itemsContainer.innerHTML = "";
 
-    images.forEach(image => {
+    items.forEach(image => {
         continue_ = true;
 
         for (let key in propertiesSort) {
