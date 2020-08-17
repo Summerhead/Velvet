@@ -1,0 +1,218 @@
+#sales-banner {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    color: black;
+    background-color: #FF607B;
+    text-align: center;
+    border-bottom: 2px solid white;
+}
+
+#sales-banner>span {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Quicksand", serif;
+    font-size: 51px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    /* line-height: 64px; */
+    white-space: nowrap;
+}
+
+#first-section {
+    height: 859px;
+    margin-bottom: 91px;
+    overflow: hidden;
+}
+
+#first-section-content {
+    position: relative;
+    height: 859px;
+}
+
+#first-section-content>img {
+    position: absolute;
+    object-fit: cover;
+    width: 2228px;
+    height: 1613px;
+    top: -438px;
+    left: -125px;
+}
+
+#first-section-overlay {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -54%);
+    font-family: "Quicksand", serif;
+}
+
+#first-section-overlay>.captions {
+    margin-bottom: 97px;
+}
+
+#first-section-overlay>.captions>h1 {
+    /* margin-bottom: 13px; */
+    z-index: 1;
+    font-size: 12.5em;
+    /* font-style: italic; */
+    text-shadow: 11.5px 5px white;
+    white-space: nowrap;
+    animation: 2s infinite blinking;
+    animation-fill-mode: forwards;
+}
+
+@keyframes blinking {
+    0% {
+        animation-timing-function: steps(1, end);
+        color: #FF7990;
+        text-shadow: 11.5px 5px white;
+    }
+
+    50% {
+        animation-timing-function: steps(1, end);
+        color: white;
+        text-shadow: 11.5px 5px #FF7990;
+    }
+}
+
+#first-section-overlay>.captions>p {
+    font-size: 5em;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+#first-section-overlay>button {
+    position: relative;
+    width: 465px;
+    height: 81px;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 3.125em;
+    font-family: "Quicksand", serif;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+
+#trending-container {
+    position: relative;
+    margin: 0 30px 100px 30px;
+    border-top: 2px solid #D3CCCC;
+}
+
+#trending {
+    position: relative;
+}
+
+#trending-header>h4 {
+    /* position: absolute; */
+    margin: 36px 0 36px 0;
+    text-align: center;
+    font-size: 25px;
+    font-family: "Quicksand", serif;
+    font-weight: lighter;
+    color: rgb(0, 0, 0);
+    white-space: nowrap;
+}
+
+#trending-content {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 37px;
+    margin: 0 70px 0 70px;
+}
+
+#first-line {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 25px;
+    max-width: 100%;
+    height: 500px;
+}
+
+.trending-images-container {
+    position: relative;
+    max-height: 100%;
+}
+
+#first-line>.trending-images-container>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#first-line>.trending-images-container>button {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -100%);
+    width: 90%;
+    height: 70px;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 30px;
+    font-family: "Quicksand", serif;
+}
+
+#second-line {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 35px;
+    max-width: 100%;
+    height: 950px;
+}
+
+#second-line>.trending-images-container>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#second-line>.trending-images-container>button {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, 0%);
+    width: 70%;
+    height: 100px;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 30px;
+    font-family: "Quicksand", serif;
+}
+
+#shop-now {
+    position: relative;
+}
+
+#shop-now>img {
+    width: 100%;
+}
+
+#shop-now>a>h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: black;
+    font-size: 300px;
+    font-family: "Quicksand", serif;
+    text-align: center;
+    white-space: nowrap;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+
+    <body>
+        <header></header>
+
+        <main>
+            <div id="item">
+                <div id="left-side"></div>
+                <div id="right-side"></div>
+            </div>
+        </main>
+
+        <script>
+            var loadItem = "/js/content_work/load_item.js",
+                cookies = "/js/cookies.js",
+                jqueryJS = "https://code.jquery.com/jquery-3.5.0.min.js";
+            $.getScript(loadItem);
+            $.getScript(cookies);
+            $.getScript(jqueryJS);
+
+            $("header").load("/html/partials/header.html");
+
+            window.onload = () => {
+                loadItem();
+            };
+        </script>
+    </body>
+</html>
